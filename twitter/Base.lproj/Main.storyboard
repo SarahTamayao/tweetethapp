@@ -114,7 +114,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtD-HB-Mli">
-                                                    <rect key="frame" x="165" y="71.5" width="41" height="47.5"/>
+                                                    <rect key="frame" x="140" y="71.5" width="41" height="47.5"/>
                                                     <state key="normal" title="#" image="retweet-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -135,10 +135,13 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NE-eL-dwg">
-                                                    <rect key="frame" x="241" y="71.5" width="41" height="47.5"/>
+                                                    <rect key="frame" x="230" y="71.5" width="41" height="47.5"/>
                                                     <state key="normal" title="#" image="favor-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="70e-dl-pH2" eventType="touchUpInside" id="qGN-Fu-w90"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TC-63-Dwj">
                                                     <rect key="frame" x="334" y="85.5" width="30" height="30"/>
@@ -151,6 +154,7 @@
                                             <constraints>
                                                 <constraint firstItem="QJW-Tx-JLN" firstAttribute="leading" secondItem="ojy-q2-t7Q" secondAttribute="trailing" constant="10" id="3OF-qs-bK9"/>
                                                 <constraint firstItem="ojy-q2-t7Q" firstAttribute="top" secondItem="oH7-OX-sfO" secondAttribute="top" id="5fm-Fg-FYw"/>
+                                                <constraint firstItem="7NE-eL-dwg" firstAttribute="leading" secondItem="Zjd-cz-OP5" secondAttribute="leading" constant="230" id="6UG-dB-nke"/>
                                                 <constraint firstItem="QJW-Tx-JLN" firstAttribute="top" secondItem="oH7-OX-sfO" secondAttribute="top" id="7fT-Lc-fCC"/>
                                                 <constraint firstItem="2TC-63-Dwj" firstAttribute="top" secondItem="7NE-eL-dwg" secondAttribute="centerY" constant="-10" id="C0O-p8-9mc"/>
                                                 <constraint firstItem="oH7-OX-sfO" firstAttribute="leading" secondItem="Zjd-cz-OP5" secondAttribute="leading" constant="10" id="FbM-tr-8Mp"/>
@@ -165,10 +169,9 @@
                                                 <constraint firstItem="XtD-HB-Mli" firstAttribute="top" secondItem="w8z-2H-hFx" secondAttribute="top" id="jfa-vz-g8g"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2TC-63-Dwj" secondAttribute="trailing" constant="30" id="knv-dN-ysC"/>
                                                 <constraint firstAttribute="bottom" secondItem="w8z-2H-hFx" secondAttribute="bottom" constant="10" id="mTz-uE-KOU"/>
-                                                <constraint firstItem="XtD-HB-Mli" firstAttribute="leading" secondItem="w8z-2H-hFx" secondAttribute="trailing" constant="35" id="pc9-C0-3Qj"/>
+                                                <constraint firstItem="XtD-HB-Mli" firstAttribute="leading" secondItem="Zjd-cz-OP5" secondAttribute="leading" constant="140" id="pGZ-DF-yUZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="PgC-MC-zVW" secondAttribute="trailing" constant="10" id="r2v-kB-Gs2"/>
                                                 <constraint firstAttribute="trailing" secondItem="kgO-yA-SmV" secondAttribute="trailing" constant="20" id="s4T-wN-ri8"/>
-                                                <constraint firstItem="7NE-eL-dwg" firstAttribute="leading" secondItem="XtD-HB-Mli" secondAttribute="trailing" constant="35" id="uAF-oc-Muo"/>
                                                 <constraint firstItem="w8z-2H-hFx" firstAttribute="top" secondItem="PgC-MC-zVW" secondAttribute="bottom" constant="10" id="uDY-0r-Taa"/>
                                                 <constraint firstItem="oH7-OX-sfO" firstAttribute="top" secondItem="Zjd-cz-OP5" secondAttribute="top" constant="10" id="vQ6-c1-Sxm"/>
                                             </constraints>
