@@ -29,7 +29,7 @@
     [self fetchTweets];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
-        [self.tableView insertSubview: self.refreshControl atIndex:0];
+    [self.tableView insertSubview: self.refreshControl atIndex:0];
     
     
    
@@ -46,12 +46,13 @@
             }*/
             self.arrayOfTweets =(NSMutableArray *) tweets;
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
 
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
-    [self.refreshControl endRefreshing];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +77,9 @@
     TweetCell *cell = (TweetCell *) [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     cell.tweet = self.arrayOfTweets[indexPath.row];
     cell.nameOfUser.text = cell.tweet.user.name;
-    cell.userNameT.text = cell.tweet.user.screenName;
+    NSString *atName = @"@";
+    NSString *screenName = [atName stringByAppendingString:cell.tweet.user.screenName];
+    cell.userNameT.text = screenName;
     cell.tweetText.text = cell.tweet.text;
     cell.tweetDate.text = cell.tweet.createdAtString;
     NSString* favCount = [NSString stringWithFormat:@"%i", cell.tweet.favoriteCount];
