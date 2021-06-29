@@ -61,7 +61,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logout:(UIButton *)sender {
+- (IBAction)logoutAction:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
