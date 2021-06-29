@@ -118,6 +118,9 @@
                                                     <state key="normal" title="#" image="retweet-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="70e-dl-pH2" eventType="touchUpInside" id="IXT-5a-GLl"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-Tx-JLN">
                                                     <rect key="frame" x="146.5" y="10" width="76" height="21"/>
@@ -129,7 +132,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8z-2H-hFx">
-                                                    <rect key="frame" x="100" y="71.5" width="30" height="47.5"/>
+                                                    <rect key="frame" x="90" y="71.5" width="30" height="47.5"/>
                                                     <state key="normal" image="reply-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -160,11 +163,11 @@
                                                 <constraint firstItem="oH7-OX-sfO" firstAttribute="leading" secondItem="Zjd-cz-OP5" secondAttribute="leading" constant="10" id="FbM-tr-8Mp"/>
                                                 <constraint firstItem="PgC-MC-zVW" firstAttribute="top" secondItem="ojy-q2-t7Q" secondAttribute="bottom" constant="10" id="Ghp-Al-qNL"/>
                                                 <constraint firstItem="ojy-q2-t7Q" firstAttribute="leading" secondItem="oH7-OX-sfO" secondAttribute="trailing" constant="10" id="JZd-WY-T9r"/>
+                                                <constraint firstItem="w8z-2H-hFx" firstAttribute="leading" secondItem="PgC-MC-zVW" secondAttribute="leading" id="L3N-ER-bG2"/>
                                                 <constraint firstItem="7NE-eL-dwg" firstAttribute="top" secondItem="w8z-2H-hFx" secondAttribute="top" id="LCa-Tb-RNb"/>
                                                 <constraint firstItem="kgO-yA-SmV" firstAttribute="top" secondItem="oH7-OX-sfO" secondAttribute="top" id="M8l-Kc-CuD"/>
                                                 <constraint firstItem="7NE-eL-dwg" firstAttribute="bottom" secondItem="w8z-2H-hFx" secondAttribute="bottom" id="OD8-uT-voG"/>
                                                 <constraint firstItem="PgC-MC-zVW" firstAttribute="leading" secondItem="ojy-q2-t7Q" secondAttribute="leading" id="RdA-c5-4zy"/>
-                                                <constraint firstItem="w8z-2H-hFx" firstAttribute="leading" secondItem="Zjd-cz-OP5" secondAttribute="leading" constant="100" id="ZT0-GH-Dnw"/>
                                                 <constraint firstItem="XtD-HB-Mli" firstAttribute="bottom" secondItem="w8z-2H-hFx" secondAttribute="bottom" id="Zns-Hr-UcI"/>
                                                 <constraint firstItem="XtD-HB-Mli" firstAttribute="top" secondItem="w8z-2H-hFx" secondAttribute="top" id="jfa-vz-g8g"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2TC-63-Dwj" secondAttribute="trailing" constant="30" id="knv-dN-ysC"/>
