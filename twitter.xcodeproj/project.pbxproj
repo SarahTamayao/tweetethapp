@@ -23,6 +23,7 @@
 		AA1477AB268A79CC00E5248D /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1477AA268A79CC00E5248D /* TweetCell.m */; };
 		AA203645268BA82200DCF14E /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA203644268BA82200DCF14E /* ComposeViewController.m */; };
 		AA203648268BE14100DCF14E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA203647268BE14100DCF14E /* DetailsViewController.m */; };
+		AAF098C5268D049B00894603 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF098C4268D049B00894603 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		AA203644268BA82200DCF14E /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		AA203646268BE14100DCF14E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		AA203647268BE14100DCF14E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		AAF098C3268D049B00894603 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		AAF098C4268D049B00894603 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				AA203644268BA82200DCF14E /* ComposeViewController.m */,
 				AA203646268BE14100DCF14E /* DetailsViewController.h */,
 				AA203647268BE14100DCF14E /* DetailsViewController.m */,
+				AAF098C3268D049B00894603 /* ProfileViewController.h */,
+				AAF098C4268D049B00894603 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				AAF098C5268D049B00894603 /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

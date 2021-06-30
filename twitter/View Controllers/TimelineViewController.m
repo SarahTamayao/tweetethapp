@@ -13,8 +13,9 @@
 #import "TweetCell.h"
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
+#import "ProfileViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate,TweetCellDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -77,6 +78,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TweetCell *cell = (TweetCell *) [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.tweet = self.arrayOfTweets[indexPath.row];
     cell.nameOfUser.text = cell.tweet.user.name;
     NSString *atName = @"@";
@@ -119,18 +121,28 @@
     [self.tableView reloadData];
     
 }
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    // TODO: Perform segue to profile view controller
+    [self performSegueWithIdentifier:@"showProfile" sender:user];
+}
 
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([sender isKindOfClass:[TweetCell class]]){
+    if ([[segue identifier] isEqualToString:@"showDetails"]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Tweet *tweeter = self.arrayOfTweets[indexPath.row];
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.tweeter = tweeter;
+        
+    }
+    else if ([[segue identifier] isEqualToString:@"showProfile"]){
+        User *user1 = sender;
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.user = user1;
         
     }
     else{

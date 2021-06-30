@@ -10,7 +10,7 @@
 #import "Tweet.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol TweetCellDelegate;
 @interface TweetCell : UITableViewCell
 @property (strong, nonatomic) Tweet *tweet;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhoto;
@@ -22,7 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *retweetB;
 @property (weak, nonatomic) IBOutlet UIButton *likeB;
 @property (weak, nonatomic) IBOutlet UIButton *messageB;
+@property (nonatomic, weak) id<TweetCellDelegate> delegate;
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender;
 
 @end
+@protocol TweetCellDelegate
+- (void)tweetCell:(TweetCell *) tweetCell didTap: (User *)user;
+@end
+
 
 NS_ASSUME_NONNULL_END
