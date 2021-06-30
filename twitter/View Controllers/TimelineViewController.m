@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "TweetCell.h"
 #import "ComposeViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray *arrayOfTweets;
@@ -94,6 +95,20 @@
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profilePhoto.image = [UIImage imageWithData:urlData];
     
+    if (cell.tweet.favorited==YES){
+        [cell.likeB setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [cell.likeB setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    }
+    
+    if (cell.tweet.retweeted==YES){
+        [cell.retweetB setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [cell.retweetB setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+    }
+    
     
     
     return cell;
@@ -110,9 +125,19 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+    if ([sender isKindOfClass:[TweetCell class]]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweeter = self.arrayOfTweets[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.tweeter = tweeter;
+        
+    }
+    else{
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
 }
 
 
