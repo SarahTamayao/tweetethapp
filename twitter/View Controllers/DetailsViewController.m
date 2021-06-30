@@ -10,6 +10,7 @@
 #import "APIManager.h"
 
 @interface DetailsViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *nameText;
 @property (weak, nonatomic) IBOutlet UILabel *usernameText;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *replyB;
 @property (weak, nonatomic) IBOutlet UIButton *retweetB;
 @property (weak, nonatomic) IBOutlet UIButton *likeB;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -27,6 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupDetailView];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(setupDetailView) forControlEvents:UIControlEventValueChanged];
+    [self.scrollView insertSubview: self.refreshControl atIndex:0];
 }
 
 - (void)setupDetailView{
@@ -61,6 +66,7 @@
     else{
         [self.retweetB setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
     }
+    [self.refreshControl endRefreshing];
 }
 - (IBAction)retweetAction:(id)sender {
     if (self.tweeter.retweeted==YES){
