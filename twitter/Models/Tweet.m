@@ -30,6 +30,18 @@
          self.favorited = [dictionary[@"favorited"] boolValue];
          self.retweetCount = [dictionary[@"retweet_count"] intValue];
          self.retweeted = [dictionary[@"retweeted"] boolValue];
+         //find photo
+         NSDictionary *entities = dictionary[@"entities"];
+         if ([entities objectForKey:@"media"] != nil){
+             NSArray *media = entities[@"media"];
+             self.mediaURLString = media[0][@"media_url_https"];
+             
+         }
+         else{
+             self.mediaURLString = nil;
+         }
+         
+         
          
          // TODO: initialize user
          NSDictionary *user = dictionary[@"user"];

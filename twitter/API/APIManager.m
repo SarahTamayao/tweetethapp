@@ -158,5 +158,22 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+- (void)replyStatusWithText:(NSString *)text withId:(NSString *)tweetID withName:(NSString *)name completion:(void (^)(Tweet *, NSError *))completion{
+    
+    NSString *atName = @"@";
+    NSString *screenName = [atName stringByAppendingString:name];
+    NSString *fullStart = [screenName stringByAppendingString:@" "];
+    NSString *fullText = [fullStart stringByAppendingString:text];
+    NSString *urlString = @"1.1/statuses/update.json";
+    NSDictionary *parameters = @{@"status": fullText,@"in_reply_to_status_id":tweetID};
+    
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
+}
+
 
 @end

@@ -14,8 +14,9 @@
 #import "ComposeViewController.h"
 #import "DetailsViewController.h"
 #import "ProfileViewController.h"
+#import "ReplyViewController.h"
 
-@interface TimelineViewController () <ComposeViewControllerDelegate,TweetCellDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate,ReplyViewControllerDelegate,TweetCellDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -115,6 +116,14 @@
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profilePhoto.image = [UIImage imageWithData:urlData];
     
+    NSString *mURLString = cell.tweet.mediaURLString;
+    cell.tweetImage.image = nil;
+    if(mURLString != nil){
+        NSURL *murl = [NSURL URLWithString:mURLString];
+        NSData *murlData = [NSData dataWithContentsOfURL:murl];
+        cell.tweetImage.image = [UIImage imageWithData:murlData];
+    }
+    
     if (cell.tweet.favorited==YES){
         [cell.likeB setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
     }
@@ -139,9 +148,18 @@
     [self.tableView reloadData];
     
 }
+- (void)didReply:(Tweet *)tweet{
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
 - (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
     // TODO: Perform segue to profile view controller
     [self performSegueWithIdentifier:@"showProfile" sender:user];
+}
+
+- (void)tweetCell:(TweetCell *)tweetCell didReply:(Tweet *)tweet{
+    // TODO: Perform segue to profile view controller
+   [self performSegueWithIdentifier:@"replySegue" sender:tweet];
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row + 1 == [self.arrayOfTweets count]){
@@ -166,6 +184,14 @@
         User *user1 = sender;
         ProfileViewController *profileViewController = [segue destinationViewController];
         profileViewController.user = user1;
+        
+    }
+    else if([[segue identifier] isEqualToString:@"replySegue"]){
+        Tweet *tweet1 = sender;
+        UINavigationController *navigationController = [segue destinationViewController];
+        ReplyViewController *replyController = (ReplyViewController*)navigationController.topViewController;
+        replyController.delegate = self;
+        replyController.tweeter = tweet1;
         
     }
     else{

@@ -1,0 +1,66 @@
+//
+//  ReplyViewController.m
+//  twitter
+//
+//  Created by Laura Yao on 7/1/21.
+//  Copyright © 2021 Emerson Malca. All rights reserved.
+//
+
+#import "ReplyViewController.h"
+#import "APIManager.h"
+
+@interface ReplyViewController () <UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *tweetText;
+@property (weak, nonatomic) IBOutlet UILabel *charCount;
+
+@end
+
+@implementation ReplyViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tweetText.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.tweetText.layer.borderWidth = 1.0;
+    self.tweetText.layer.cornerRadius = 8;
+    self.tweetText.delegate = self;
+    // Do any additional setup after loading the view.
+}
+- (IBAction)replyAction:(id)sender {
+    [[APIManager shared]  replyStatusWithText:self.tweetText.text withId:self.tweeter.idStr withName:self.tweeter.user.screenName completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+                NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+            }
+            else{
+                [self.delegate didReply:tweet];
+                NSLog(@"Reply Tweet Success!");
+                [self dismissViewControllerAnimated:true completion:nil];
+            }
+    }];
+}
+- (IBAction)closeAction:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    int characterLimit = 140;
+
+    // Construct what the new text would be if we allowed the user's latest edit
+    NSString *newText = [self.tweetText.text stringByReplacingCharactersInRange:range withString:text];
+
+    // TODO: Update character count label
+    self.charCount.text = [NSString stringWithFormat:@"%lu",characterLimit-newText.length];
+
+    // Should the new text should be allowed? True/False
+    return newText.length < characterLimit;
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

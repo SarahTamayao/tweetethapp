@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *retweetB;
 @property (weak, nonatomic) IBOutlet UIButton *likeB;
 @property (weak, nonatomic) IBOutlet UIButton *messageB;
+@property (weak, nonatomic) IBOutlet UIImageView *tweetImage;
 @property (nonatomic, weak) id<TweetCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextView *tweetText;
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender;
@@ -28,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 @protocol TweetCellDelegate
 - (void)tweetCell:(TweetCell *) tweetCell didTap: (User *)user;
+- (void)tweetCell:(TweetCell *) tweetCell didReply: (Tweet *)tweet;
 @end
 
 

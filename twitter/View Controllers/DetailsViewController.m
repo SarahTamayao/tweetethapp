@@ -8,13 +8,14 @@
 
 #import "DetailsViewController.h"
 #import "APIManager.h"
+#import "ReplyViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *nameText;
 @property (weak, nonatomic) IBOutlet UILabel *usernameText;
-@property (weak, nonatomic) IBOutlet UILabel *tweetText;
+@property (weak, nonatomic) IBOutlet UITextView *tweetText;
 @property (weak, nonatomic) IBOutlet UILabel *dateText;
 @property (weak, nonatomic) IBOutlet UIButton *replyB;
 @property (weak, nonatomic) IBOutlet UIButton *retweetB;
@@ -125,14 +126,24 @@
         }];
     }
 }
-/*
+- (IBAction)replyAction:(id)sender {
+    [self performSegueWithIdentifier:@"showReply" sender:self.tweeter];
+    
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"showReply"]){
+        Tweet *tweet1 = sender;
+        UINavigationController *navigationController = [segue destinationViewController];
+        ReplyViewController *replyController = (ReplyViewController*)navigationController.topViewController;
+        //replyController.delegate = self;
+        replyController.tweeter = tweet1;
+        
+    }
 }
-*/
+
 
 @end

@@ -23,6 +23,7 @@
 		AA1477AB268A79CC00E5248D /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1477AA268A79CC00E5248D /* TweetCell.m */; };
 		AA203645268BA82200DCF14E /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA203644268BA82200DCF14E /* ComposeViewController.m */; };
 		AA203648268BE14100DCF14E /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA203647268BE14100DCF14E /* DetailsViewController.m */; };
+		AAB3074A268E4DA90014FA2A /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB30749268E4DA90014FA2A /* ReplyViewController.m */; };
 		AAF098C5268D049B00894603 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF098C4268D049B00894603 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		AA203644268BA82200DCF14E /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		AA203646268BE14100DCF14E /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		AA203647268BE14100DCF14E /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		AAB30748268E4DA90014FA2A /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
+		AAB30749268E4DA90014FA2A /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
 		AAF098C3268D049B00894603 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		AAF098C4268D049B00894603 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +165,8 @@
 				AA203647268BE14100DCF14E /* DetailsViewController.m */,
 				AAF098C3268D049B00894603 /* ProfileViewController.h */,
 				AAF098C4268D049B00894603 /* ProfileViewController.m */,
+				AAB30748268E4DA90014FA2A /* ReplyViewController.h */,
+				AAB30749268E4DA90014FA2A /* ReplyViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA1477AB268A79CC00E5248D /* TweetCell.m in Sources */,
+				AAB3074A268E4DA90014FA2A /* ReplyViewController.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				AA203648268BE14100DCF14E /* DetailsViewController.m in Sources */,
 				AA1477A5268A6CA800E5248D /* User.m in Sources */,

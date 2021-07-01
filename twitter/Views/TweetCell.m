@@ -24,6 +24,9 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)didTapReply:(id)sender {
+    [self.delegate tweetCell:self didReply:self.tweet];
+}
 - (IBAction)didTapFavorite:(id)sender {
     if (self.tweet.favorited==YES){
         self.tweet.favorited = NO;
@@ -99,6 +102,15 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     self.profilePhoto.image = [UIImage imageWithData:urlData];
+    
+    NSString *mURLString = self.tweet.mediaURLString;
+    self.tweetImage.image = nil;
+    if(mURLString != nil){
+        NSURL *murl = [NSURL URLWithString:mURLString];
+        NSData *murlData = [NSData dataWithContentsOfURL:murl];
+        self.tweetImage.image = [UIImage imageWithData:murlData];
+    }
+    
     
     if (self.tweet.favorited==YES){
         [self.likeB setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
