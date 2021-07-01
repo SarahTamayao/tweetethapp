@@ -12,7 +12,6 @@
 #import "Tweet.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
-//@property (strong, nonatomic) IBOutlet UIView *theView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *bannerView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
@@ -25,7 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *followerCount;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayOfTweets;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -37,9 +37,9 @@
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     [self setupProfileView];
-    //self.refreshControl = [[UIRefreshControl alloc] init];
-    //[self.refreshControl addTarget:self action:@selector(setupProfileView) forControlEvents:UIControlEventValueChanged];
-    //[self.theView insertSubview: self.refreshControl atIndex:0];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(setupProfileView) forControlEvents:UIControlEventValueChanged];
+    [self.scrollView insertSubview: self.refreshControl atIndex:0];
 }
 -(NSString*) suffixNumber:(NSNumber*)number
 {
@@ -95,7 +95,7 @@
             NSLog(@"😎😎😎 Successfully loaded user timeline");
             self.arrayOfTweets =(NSMutableArray *) tweets;
             [self.tableView reloadData];
-            //[self.refreshControl endRefreshing];
+            [self.refreshControl endRefreshing];
 
         } else {
             NSLog(@"😫😫😫 Error getting user timeline: %@", error.localizedDescription);
@@ -127,6 +127,14 @@
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
     cell.profilePhoto.image = [UIImage imageWithData:urlData];
+    
+    NSString *mURLString = cell.tweet.mediaURLString;
+    cell.tweetImage.image = nil;
+    if(mURLString != nil){
+        NSURL *murl = [NSURL URLWithString:mURLString];
+        NSData *murlData = [NSData dataWithContentsOfURL:murl];
+        cell.tweetImage.image = [UIImage imageWithData:murlData];
+    }
     
     if (cell.tweet.favorited==YES){
         [cell.likeB setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
