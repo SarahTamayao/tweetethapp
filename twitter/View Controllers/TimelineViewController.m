@@ -57,6 +57,24 @@
     }];
     
 }
+- (void) loadMoreData:(NSInteger)count{
+    NSNumber *nscount = @(count);
+    [[APIManager shared] getHomeTimeline:nscount completion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            /*for (NSDictionary *dictionary in tweets) {
+                NSString *text = dictionary[@"text"];
+                NSLog(@"%@", text);
+            }*/
+            self.arrayOfTweets =(NSMutableArray *) tweets;
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -124,6 +142,11 @@
 - (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
     // TODO: Perform segue to profile view controller
     [self performSegueWithIdentifier:@"showProfile" sender:user];
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row + 1 == [self.arrayOfTweets count]){
+        [self loadMoreData:[self.arrayOfTweets count] + 20];
+    }
 }
 
 
