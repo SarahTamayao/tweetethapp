@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameOfUser;
 @property (weak, nonatomic) IBOutlet UILabel *userNameT;
 @property (weak, nonatomic) IBOutlet UILabel *tweetDate;
-@property (weak, nonatomic) IBOutlet UILabel *tweetText;
 @property (weak, nonatomic) IBOutlet UIButton *replyB;
 @property (weak, nonatomic) IBOutlet UIButton *retweetB;
 @property (weak, nonatomic) IBOutlet UIButton *likeB;
 @property (weak, nonatomic) IBOutlet UIButton *messageB;
 @property (nonatomic, weak) id<TweetCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *tweetText;
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender;
 
 @end
