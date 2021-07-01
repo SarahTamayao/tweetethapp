@@ -626,21 +626,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Test Tweet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RwB-9N-9pu">
-                                <rect key="frame" x="0.0" y="56" width="414" height="348"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RwB-9N-9pu">
+                                <rect key="frame" x="20" y="56" width="374" height="280.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-iC-FKF">
+                                <rect key="frame" x="333" y="351.5" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UXA-xG-fWH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RwB-9N-9pu" firstAttribute="top" secondItem="UXA-xG-fWH" secondAttribute="top" id="5tk-30-38J"/>
-                            <constraint firstItem="RwB-9N-9pu" firstAttribute="trailing" secondItem="UXA-xG-fWH" secondAttribute="trailing" id="DbX-mG-Nfk"/>
-                            <constraint firstItem="RwB-9N-9pu" firstAttribute="leading" secondItem="UXA-xG-fWH" secondAttribute="leading" id="GtL-RI-eVP"/>
-                            <constraint firstItem="RwB-9N-9pu" firstAttribute="bottom" secondItem="UXA-xG-fWH" secondAttribute="bottom" multiplier="1:2" id="grq-QV-2PS"/>
+                            <constraint firstItem="RwB-9N-9pu" firstAttribute="trailing" secondItem="UXA-xG-fWH" secondAttribute="trailing" constant="-20" id="DbX-mG-Nfk"/>
+                            <constraint firstItem="RwB-9N-9pu" firstAttribute="height" secondItem="MOG-t4-uoS" secondAttribute="height" multiplier="1:3" id="EUB-P7-euJ"/>
+                            <constraint firstItem="RwB-9N-9pu" firstAttribute="leading" secondItem="UXA-xG-fWH" secondAttribute="leading" constant="20" id="GtL-RI-eVP"/>
+                            <constraint firstItem="sGP-iC-FKF" firstAttribute="top" secondItem="RwB-9N-9pu" secondAttribute="bottom" constant="15" id="iap-r1-mud"/>
+                            <constraint firstItem="UXA-xG-fWH" firstAttribute="trailing" secondItem="sGP-iC-FKF" secondAttribute="trailing" constant="50" id="ss0-NH-ytB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S5D-zK-X5B">
@@ -656,6 +664,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="charCount" destination="sGP-iC-FKF" id="R9o-Uo-Cdn"/>
                         <outlet property="tweetText" destination="RwB-9N-9pu" id="o5r-gG-Icw"/>
                     </connections>
                 </viewController>
@@ -732,6 +741,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

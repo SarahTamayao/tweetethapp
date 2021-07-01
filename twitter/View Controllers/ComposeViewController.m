@@ -9,8 +9,9 @@
 #import "ComposeViewController.h"
 #import "APIManager.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *tweetText;
+@property (weak, nonatomic) IBOutlet UILabel *charCount;
 
 @end
 
@@ -18,6 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tweetText.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.tweetText.layer.borderWidth = 1.0;
+    self.tweetText.layer.cornerRadius = 8;
+    self.tweetText.delegate = self;
     // Do any additional setup after loading the view.
 }
 - (IBAction)closeAction:(UIBarButtonItem *)sender {
@@ -35,6 +40,18 @@
             }
     }];
     
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    int characterLimit = 280;
+
+    // Construct what the new text would be if we allowed the user's latest edit
+    NSString *newText = [self.tweetText.text stringByReplacingCharactersInRange:range withString:text];
+
+    // TODO: Update character count label
+    self.charCount.text = [NSString stringWithFormat:@"%lu",characterLimit-newText.length];
+
+    // Should the new text should be allowed? True/False
+    return newText.length < characterLimit;
 }
 
 /*
