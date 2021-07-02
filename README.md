@@ -61,6 +61,8 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/gss223/tweetethapp/blob/main/gif4.gif' title='Video Walkthrough 1' width='' alt='Video Walkthrough4' />
 
+<img src='https://github.com/gss223/tweetethapp/blob/main/gif5.gif' title='Video Walkthrough 1' width='' alt='Video Walkthrough5' />
+
 
 
 
