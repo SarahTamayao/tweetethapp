@@ -9,13 +9,16 @@
 #import "BDBOAuth1SessionManager.h"
 #import "BDBOAuth1SessionManager+SFAuthenticationSession.h"
 #import "Tweet.h"
+#import "User.h"
 
 @interface APIManager : BDBOAuth1SessionManager
 
 + (instancetype)shared;
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
+- (void)getMentionsTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void)getHomeTimeline:(NSNumber *)count completion:(void(^)(NSArray *tweets, NSError *error))completion;
+- (void)getYourself:(void(^)(User *user, NSError *error))completion;
 - (void)getUserTimeline:(NSString *)screenName completion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;

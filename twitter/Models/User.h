@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *bannerPicture;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
++ (User *)initUser:(NSDictionary *)dictionary;
 
 @end
 

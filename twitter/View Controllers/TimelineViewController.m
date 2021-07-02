@@ -34,6 +34,11 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview: self.refreshControl atIndex:0];
+    self.navigationItem.title = @"twitter";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.barTintColor = [UIColor colorWithRed: 0.11 green: 0.63 blue: 0.95 alpha: 1.00];
+    //navigationBar.backgroundColor = [UIColor colorWithRed: 0.11 green: 0.63 blue: 0.95 alpha: 1.00];
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:30], NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     
    

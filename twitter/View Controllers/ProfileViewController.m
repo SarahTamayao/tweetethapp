@@ -33,10 +33,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.user){
+        [self setupProfileView];
+    }
+    else{
+        [[APIManager shared] getYourself:^(User *user, NSError *error) {
+            if (user) {
+                NSLog(@"😎😎😎 Successfully loaded user");
+                self.user =user;
+                [self setupProfileView];
+                //[self.tableView reloadData];
+               // [self.refreshControl endRefreshing];
+
+            } else {
+                NSLog(@"😫😫😫 Error getting user: %@", error.localizedDescription);
+            }
+        
+            }];
+    }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
-    [self setupProfileView];
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(setupProfileView) forControlEvents:UIControlEventValueChanged];
     [self.scrollView insertSubview: self.refreshControl atIndex:0];

@@ -28,4 +28,9 @@
     return self;
 }
 
++ (User *)initUser:(NSDictionary *)dictionary{
+    User *user= [[User alloc] initWithDictionary:dictionary];
+    return user;
+}
+
 @end
